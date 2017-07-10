@@ -27,6 +27,7 @@ function getRepoList(page) {
 }
 
 function filterRepoList() {
+  repoList = repoList.filter(repo => repo.name.includes("-v-000"))
   console.log(repoList.length);
 }
 
