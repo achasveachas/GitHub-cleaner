@@ -42,6 +42,7 @@ function markPrivate() {
   for (var i = 0; i < repoList.length; i++) {
     document.getElementById("progress").innerHTML = `Lab ${i + 1}/${repoList.length} has been marked private.`
   }
+  addStatus("All labs have been marked private!")
 
 }
 
