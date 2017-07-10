@@ -1,10 +1,8 @@
 let repoList = []
 
-function handleMarkRepos() {
-  if (confirm("Are you sure you want to mark your repos private?\nThis step can not be undone easily.")) {
-    getRepoList(1)
-    addStatus("Getting Repos")
-  }
+function handleGetLabs() {
+  getRepoList(1)
+  addStatus("Getting Repos")
 }
 
 function getRepoList(page) {
