@@ -44,5 +44,5 @@ function getUsername() {
 
 function getToken() {
   // Go to https://github.com/settings/tokens and get a token, make sure to delete it before commiting
-  return '343a4e12886c86d4d15c2ae1eb97a0ee52e17eb0'
+  return ''
 }
