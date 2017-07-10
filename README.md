@@ -22,3 +22,12 @@ Before you start you will have to obtain a personal token from GitHub, you can g
 + Click on the "Get List Of Labs" button
 + Once the progress bar indicates you have all the labs (may take a few minutes), click the "Make Repos Private" button.
 + Wait until you get the notification that all labs have been marked private
+
+
+### Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/achasveachas/GitHub-cleaner or by email to contact@yechiel.me This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
+
+### License
+
+The script is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
