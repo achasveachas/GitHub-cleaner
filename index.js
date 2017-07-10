@@ -2,8 +2,8 @@ let repoList = []
 
 function handleMarkRepos() {
   if (confirm("Are you sure you want to mark your repos private?\nThis step can not be undone easily.")) {
-
     getRepoList(1)
+    addStatus("Getting Repos")
   }
 }
 
@@ -27,8 +27,16 @@ function getRepoList(page) {
 }
 
 function filterRepoList() {
+  addStatus("Filtering Repos")
+
   repoList = repoList.filter(repo => repo.name.includes("-v-000"))
-  console.log(repoList.length);
+  addStatus(`${repoList.length} Flatiron labs found`)
+}
+
+function addStatus(status) {
+  var li = document.createElement("li")
+  li.innerHTML = status
+  document.getElementById('progress').append(li)
 }
 
 function getUsername() {
@@ -38,5 +46,5 @@ function getUsername() {
 
 function getToken() {
   // Go to https://github.com/settings/tokens and get a token, make sure to delete it before commiting
-  return ''
+  return '343a4e12886c86d4d15c2ae1eb97a0ee52e17eb0'
 }
