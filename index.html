@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript fetch() Lab</title>
+    <style>
+      .flexbox-container {
+        display: -ms-flex;
+        display: -webkit-flex;
+        display: flex;
+      }
+      .flexbox-container > div {
+        width: 50%;
+        padding: 10px;
+      }
+      .flexbox-container > div:first-child {
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="main">
+      <div id="errors"></div>
+    </main>
+    <div class="flexbox-container">
+      <div>
+        <h3>Create Fork</h3>
+        <p><a href="#" onclick="forkRepo()">Fork Repository</a></p>
+        <div id="results"></div>
+      </div>
+      <div>
+        <h3>Issues</h3>
+        <div>
+          Issue Title: <input type="text" id="title"><br>
+          Issue Text: <input type="text" id="body"><br>
+          <a href="#" id="search" onclick="createIssue()">Create Issue</a>
+        </div>
+        <div id="issues"></div>
+      </div>
+    </div>
+    <script src="handlebars.js"></script>
+    <script src="index.js"></script>
+    <script id="repo-template" type="text/x-handlebars-template">
+      <h3>Forked Successfully!</h3>
+      <!--fill me in with templatey goodness-->
+      {{full_name}} - <a href="{{html_url}}">link</a>
+    </script>
+    <script id="issues-template" type="text/x-handlebars-template">
+      <!--fill me in with templatey goodness-->
+      <ul>
+        {{#each this}}
+        <li>{{title}} - {{body}} - <a href="{{url}}"></a>link</li>
+        {{/each}}
+      </ul>
+    </script>
+  </body>
+</html>
