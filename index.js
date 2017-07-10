@@ -29,6 +29,15 @@ function filterRepoList() {
 
   repoList = repoList.filter(repo => repo.name.includes("-v-000"))
   addStatus(`${repoList.length} Flatiron labs found`)
+  document.getElementById("private").disabled = false
+}
+
+function handleMarkReposPrivate() {
+  if (confirm(`Are you sure you want to mark these ${repoList.length} repos private?\nThis action can not be undone easily!`)) {
+    for (var i = 0; i < repoList.length; i++) {
+      document.getElementById("progress").innerHTML = `Lab ${i + 1}/${repoList.length} has been marked private.`
+    }
+  }
 }
 
 function addStatus(status) {
