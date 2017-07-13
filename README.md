@@ -1,5 +1,7 @@
 # GitHub-cleaner
 
++ Note: this was a good idea in theory, until I realized you can't mark forked repos as private. Oh well. Was fun writing it...
+
 ### Overview
 
 This is a small script for Flatiron students who want to clean up their GitHub accounts by marking the Flatiron labs as private.
