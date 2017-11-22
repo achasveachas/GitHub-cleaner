@@ -29,11 +29,11 @@ function filterRepoList() {
 
   repoList = repoList.filter(repo => repo.name.includes("-v-000") && repo.owner.login === getUsername())
   addStatus(`${repoList.length} Flatiron labs found`)
-  document.getElementById("private").disabled = false
+  document.getElementById("archive").disabled = false
 }
 
-function handleMarkReposPrivate() {
-  if (confirm(`Are you sure you want to mark these ${repoList.length} repos private?\nThis action can not be undone easily!`)) {
+function handleArchiveRepos() {
+  if (confirm(`Are you sure you want to archive these ${repoList.length} repos?\nThis action can not be undone easily!`)) {
     archive()
   }
 }
@@ -54,10 +54,10 @@ function archive() {
       },
       body: JSON.stringify(requestBody)
     })
-    .then(res => document.getElementById("progress").innerHTML = `Lab ${i + 1}/${repoList.length} has been marked private.`)
+    .then(res => document.getElementById("progress").innerHTML = `Lab ${i + 1}/${repoList.length} has been archived.`)
     .catch(er => console.log(er))
   }
-  addStatus("All labs have been marked private!")
+  addStatus("All labs have been archived!")
 }
 
 function addStatus(status) {
