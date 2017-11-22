@@ -34,18 +34,18 @@ function filterRepoList() {
 
 function handleMarkReposPrivate() {
   if (confirm(`Are you sure you want to mark these ${repoList.length} repos private?\nThis action can not be undone easily!`)) {
-    markPrivate()
+    archive()
   }
 }
 
-function markPrivate() {
+function archive() {
   for (var i = 0; i < repoList.length; i++) {
     var repo = repoList[i]
     var url = repo.url
     var name = repo.name
     var requestBody = {
       name: name,
-      private: true
+      archived: true
     }
     fetch(url, {
       method: 'PATCH',
