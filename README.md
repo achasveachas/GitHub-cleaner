@@ -1,6 +1,6 @@
 # GitHub-cleaner
 
-+ Note: this was originally supposed to make the abs private, until I realized you can't mark forked repos as private. Oh well. Was fun writing it.
++ Note: this was originally supposed to make the labs private, until I realized you can't mark forked repos as private. Oh well. Was fun writing it.
 + Thankfully, GitHub came out with the ability to archive repos, which is not as good, but better than nothing I guess...
 
 ### Overview
@@ -12,6 +12,9 @@ This is a small script for Flatiron students who want to clean up their GitHub a
 This script works by filtering your repos and looking for the `-v-000` flag, it will not archive repos not containing the flag. If there are any labs you want to keep unarchived (for example, I know I wanted to keep my TTT with AI in my GitHub), you will have to manually go in to your GitHub account and unarchive it.
 
 Before you start you will have to obtain a personal token from GitHub, you can get it [here](https://github.com/settings/tokens) and clicking on the 'Generate New Token' button, make sure to enable the "Repo" scope.
+
+Then go to `index.js` and add your GitHub username to the `getUsername()` function and your token to the `getToken()` function (both are near the bottom of the file).
+**Rememebr to delete your token before making any commits to the repo**
 
 ### Usage:
 
