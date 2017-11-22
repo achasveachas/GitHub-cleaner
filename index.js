@@ -67,11 +67,11 @@ function addStatus(status) {
 }
 
 function getUsername() {
-  // Return your GitHub username below
-  return 'achasveachas'
+  // Paste your GitHub username below
+  return ''
 }
 
 function getToken() {
-  // Go to https://github.com/settings/tokens and get a token, make sure to delete it before commiting
+  // Go to https://github.com/settings/tokens and get a token. Paste the token below. Make sure to delete it before commiting
   return ''
 }
