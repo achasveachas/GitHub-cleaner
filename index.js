@@ -1,8 +1,12 @@
 let repoList = []
 
 function handleGetLabs() {
-  getRepoList(1)
-  addStatus("Getting Repos")
+  if (getToken() && getUsername()) {
+    getRepoList(1)
+    addStatus("Getting Repos")
+  } else {
+    console.log("Please provide your GitHub token and username.\nSee https://github.com/achasveachas/GitHub-cleaner/blob/master/README.md for details.")
+  }
 }
 
 function getRepoList(page) {
@@ -19,6 +23,7 @@ function getRepoList(page) {
       filterRepoList()
     } else {
       repoList = repoList.concat(json)
+      console.log("Retrieved " + repoList.length + "repos.")
       getRepoList(page + 1)
     }
   })
@@ -29,23 +34,23 @@ function filterRepoList() {
 
   repoList = repoList.filter(repo => repo.name.includes("-v-000") && repo.owner.login === getUsername())
   addStatus(`${repoList.length} Flatiron labs found`)
-  document.getElementById("archive").disabled = false
+  document.getElementById("make_private").disabled = false
 }
 
-function handleArchiveRepos() {
-  if (confirm(`Are you sure you want to archive these ${repoList.length} repos?\nThis action can not be undone easily!`)) {
-    archive()
+function handlePrivatizeRepos() {
+  if (confirm(`Are you sure you want to mark these ${repoList.length} repos private?`)) {
+    privatize()
   }
 }
 
-function archive() {
+function privatize() {
   for (var i = 0; i < repoList.length; i++) {
     var repo = repoList[i]
     var url = repo.url
     var name = repo.name
     var requestBody = {
       name: name,
-      archived: true
+      private: true
     }
     fetch(url, {
       method: 'PATCH',
@@ -54,10 +59,10 @@ function archive() {
       },
       body: JSON.stringify(requestBody)
     })
-    .then(res => document.getElementById("progress").innerHTML = `Lab ${i + 1}/${repoList.length} has been archived.`)
+    .then(res => document.getElementById("progress").innerHTML = `Lab ${i + 1}/${repoList.length} has been marked private.`)
     .catch(er => console.log(er))
   }
-  addStatus("All labs have been archived!")
+  addStatus("All labs have been marked private!")
 }
 
 function addStatus(status) {
