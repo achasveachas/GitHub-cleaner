@@ -1,4 +1,5 @@
 let repoList = [];
+const SEARCH_TERM = "-web-";
 
 function handleGetLabs() {
   if (getToken() && getUsername()) {
@@ -34,7 +35,8 @@ function filterRepoList() {
   addStatus("Filtering Repos");
 
   repoList = repoList.filter(
-    repo => repo.name.includes("-web-") && repo.owner.login === getUsername()
+    repo =>
+      repo.name.includes(SEARCH_TERM) && repo.owner.login === getUsername()
   );
   addStatus(`${repoList.length} Flatiron labs found`);
   document.getElementById("make_private").disabled = false;
@@ -83,7 +85,7 @@ function handleTransferRepos() {
     confirm(
       `Are you sure you want to transfer these ${
         repoList.length
-      } repos to ${ORG_ID}?`
+      } repos to "${ORG_ID}"?`
     )
   ) {
     transferRepos();
@@ -123,11 +125,12 @@ function addStatus(status) {
 }
 
 function getUsername() {
-  // Paste your GitHub username below
+  // Create config.js and add const USER_ID = "Paste your username here".
   return USER_ID;
 }
 
 function getToken() {
-  // Go to https://github.com/settings/tokens and get a token. Paste the token below. Make sure to delete it before commiting
+  // Go to https://github.com/settings/tokens and get a token.
+  // Create config.js and add const TOKEN_ID = "Paste your token here".
   return TOKEN_ID;
 }
