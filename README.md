@@ -3,7 +3,7 @@
 - Note: this was originally supposed to make the labs private, until I realized you can't mark forked repos as private. Oh well. Was fun writing it.
 - Thankfully, GitHub came out with the ability to archive repos, which is not as good, but better than nothing I guess...
 - **[Update Jan 2019]**: GitHub has now added private repos to free accounts as well! The script has been updated accordingly. If you used the previous version of the script to archive your repos see the note below.
-- **[Transfer Repos API]**: GitHub add preview API - transfer repos to new owner/organization [here](https://developer.github.com/v3/repos/#transfer-a-repository). The script has been added with this new feature.
+- **[Transfer Repos API]**: GitHub add preview API - transfer repos to new owner/organization [here](https://developer.github.com/v3/repos/#transfer-a-repository). The script has been updated to add this new feature.
 
 ## Overview
 
@@ -11,7 +11,7 @@ This is a small script for Flatiron students who want to clean up their GitHub a
 
 ### Before you start
 
-This script works by filtering your repos and looking for the `SEARCH_TERM` flag from "Search input field", it will not privatize/transfer repos not containing the flag. If there are any repos you want to keep public/not transfer (for example, I know I wanted to keep my TTT with AI in my GitHub), you will have to manually go in to your GitHub account and change it.
+This script works by filtering your repos and looking for the `SEARCH_TERM` flag from "Search input field", it will not privatize/transfer repos not containing the flag. If there are any repos you want to keep public/not transfer (for example, I know I wanted to keep my TTT with AI in my GitHub), you will have to manually go in to your GitHub account and change it back after running the script.
 
 Before you start you will have to obtain a personal token from GitHub, you can get it by going [here](https://github.com/settings/tokens) and clicking on the "Generate New Token" button, make sure to enable the "Repo" scope.
 
@@ -19,11 +19,12 @@ Before you start you will have to obtain a personal token from GitHub, you can g
 
 - Clone or download this repo
 - Open up index.js
-- Put your GitHub username in the getUsername function
-- Put your GitHub Personal Token in the getToken function
 - Open up index.html in your browser
+- Put your GitHub username and token in the appropriate fields
+- Put the  name of the GitHub org if you would like to transfer ownership
+- Enter a search term which will serve as a unique identifier of the repos you want to mark private (this is unique per Flatiron track and should look something like `v-000`)
 - Click on the "Get List Of Repos" button
-- Once the progress bar indicates you have all the repos. This may take a few minutes, you can open the browser console to get progress updates. Once all of the repos were retrieved and filtered click the "Make Private" or "Transfer Repos" button.
+- Once the progress bar indicates you have all the repos (this may take a few minutes, you can open the browser console to get progress updates), all of the repos were retrieved and filtered. Click the "Make Private" or "Transfer Repos" button.
 - Wait until you get the notification that all repos have been marked private or transfer.
 - You also can go [here](https://sparkbold.github.io/GitHub-cleaner/) to run the script.
 
