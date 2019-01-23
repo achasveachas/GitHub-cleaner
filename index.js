@@ -110,11 +110,11 @@ function transferRepos(ORG_ID) {
     })
       .then(
         res =>
-          (document.getElementById("progress").innerHTML = `Lab ${i + 1}/${
+          (document.getElementById("progress").innerHTML = `Repo(s) ${i}/${
             repoList.length
           } has been transfered to ${ORG_ID}.`)
       )
-      .catch(er => console.log(er));
+      .catch(er => reportErrors(er));
   }
   addStatus("All labs have been transfered!");
 }
