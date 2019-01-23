@@ -1,13 +1,12 @@
 let repoList = [];
-const SEARCH_TERM = "-web-";
 
 function handleGetLabs() {
   if (getToken() && getUsername()) {
     getRepoList(1);
     addStatus("Getting Repos");
   } else {
-    console.log(
-      "Please provide your GitHub token and username.\nSee https://github.com/achasveachas/GitHub-cleaner/blob/master/README.md for details."
+    reportErrors(
+      `Please provide your GitHub token and username.<br /> See <a href="https://github.com/achasveachas/GitHub-cleaner/blob/master/README.md">HERE</a> for details.`
     );
   }
 }
@@ -32,13 +31,14 @@ function getRepoList(page) {
 }
 
 function filterRepoList() {
+  const SEARCH_TERM = document.getElementById("search").value;
   addStatus("Filtering Repos");
 
   repoList = repoList.filter(
     repo =>
       repo.name.includes(SEARCH_TERM) && repo.owner.login === getUsername()
   );
-  addStatus(`${repoList.length} Flatiron labs found`);
+  addStatus(`${repoList.length} Repos found`);
   document.getElementById("make_private").disabled = false;
   document.getElementById("transfer_repos").disabled = false;
 }
@@ -75,12 +75,13 @@ function privatize() {
             repoList.length
           } has been marked private.`)
       )
-      .catch(er => console.log(er));
+      .catch(er => reportErrors(er));
   }
   addStatus("All labs have been marked private!");
 }
 
 function handleTransferRepos() {
+  const ORG_ID = document.getElementById("organization").value;
   if (
     confirm(
       `Are you sure you want to transfer these ${
@@ -88,11 +89,11 @@ function handleTransferRepos() {
       } repos to "${ORG_ID}"?`
     )
   ) {
-    transferRepos();
+    transferRepos(ORG_ID);
   }
 }
 
-function transferRepos() {
+function transferRepos(ORG_ID) {
   for (var i = 0; i < repoList.length; i++) {
     var repo = repoList[i];
     var url = repo.url + "/transfer";
@@ -124,13 +125,15 @@ function addStatus(status) {
   document.getElementById("progress").append(li);
 }
 
+function reportErrors(error) {
+  document.getElementById("errors").innerHTML = error;
+}
+
 function getUsername() {
-  // Create config.js and add const USER_ID = "Paste your username here".
-  return USER_ID;
+  return document.getElementById("username").value;
 }
 
 function getToken() {
   // Go to https://github.com/settings/tokens and get a token.
-  // Create config.js and add const TOKEN_ID = "Paste your token here".
-  return TOKEN_ID;
+  return document.getElementById("token").value;
 }

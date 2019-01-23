@@ -1,43 +1,79 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>GitHub Cleaner</title>
+    <style>
+      .flexbox-container {
+        display: -ms-flex;
+        display: -webkit-flex;
+        display: flex;
+      }
 
-<head>
-  <title>GitHub Cleaner</title>
-  <style>
-    .flexbox-container {
-      display: -ms-flex;
-      display: -webkit-flex;
-      display: flex;
-    }
+      .flexbox-container > div {
+        width: 50%;
+        padding: 10px;
+      }
 
-    .flexbox-container>div {
-      width: 50%;
-      padding: 10px;
-    }
+      .flexbox-container > div:first-child {
+        margin-right: 20px;
+      }
 
-    .flexbox-container>div:first-child {
-      margin-right: 20px;
-    }
-  </style>
-</head>
+      #errors {
+        color: red;
+      }
 
-<body>
-  <main id="main">
-    <div id="errors"></div>
-  </main>
-  <div class="flexbox-container">
-    <div>
-      <button onclick="handleGetLabs()">Get List of Labs</button>
-      <button id="make_private" onclick="handlePrivatizeRepos()" disabled>Make Private</button>
-      <button id="transfer_repos" onclick="handleTransferRepos()" disabled>Transfer Repos</button>
+      input {
+        padding: 0.5em;
+        margin-bottom: 0.5em;
+        width: 250px;
+      }
+
+      button {
+        padding: 0.5em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main id="main">
+      <div class="title"><h1>GitHub Cleaner</h1></div>
+      <div id="errors"></div>
+    </main>
+    <div class="flexbox-container">
       <div>
-        <h3>Progress</h3>
-        <ul id="progress"></ul>
+        <input
+          type="text"
+          id="token"
+          placeholder="Paste your github token here"
+        /><br />
+        <input
+          type="text"
+          id="username"
+          placeholder="Type your github username here"
+        /><br />
+        <input
+          type="text"
+          id="organization"
+          placeholder="Type your github organization here"
+        /><br />
+        <input
+          type="text"
+          id="search"
+          placeholder="Type your search keyword here"
+        /><br /><br />
+        <button onclick="handleGetLabs()">Get List of Repos</button>
+        <button id="make_private" onclick="handlePrivatizeRepos()" disabled>
+          Make Private
+        </button>
+        <button id="transfer_repos" onclick="handleTransferRepos()" disabled>
+          Transfer Repos
+        </button>
+        <div>
+          <h3>Progress</h3>
+          <ul id="progress"></ul>
+        </div>
       </div>
     </div>
-  </div>
-  <script src="config.js"></script>
-  <script src="index.js"></script>
-</body>
-
+    <script src="index.js"></script>
+  </body>
 </html>
