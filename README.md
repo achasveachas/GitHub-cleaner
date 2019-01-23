@@ -25,7 +25,7 @@ Before you start you will have to obtain a personal token from GitHub, you can g
 - Click on the "Get List Of Repos" button
 - Once the progress bar indicates you have all the repos. This may take a few minutes, you can open the browser console to get progress updates. Once all of the repos were retrieved and filtered click the "Make Private" or "Transfer Repos" button.
 - Wait until you get the notification that all repos have been marked private or transfer.
-- You also can go [here](https://sparkbold.github.io/github-cleaner/) to run the script.
+- You also can go [here](https://sparkbold.github.io/GitHub-cleaner/) to run the script.
 
 ### Note
 
